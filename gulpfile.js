@@ -18,8 +18,22 @@ var reload = sync.reload;
  * Utilities
  */
 
+var bundler = watchify(browserify('./app/main.js', watchify.args));
+gulp.task('serve', function () {
+    
+    bundler.on('update', bundle);
+    bundler.on('log', gutil.log);
+    
+    sync({
+        server: {
+            baseDir: "./build"
+        }
+    });
+    
+});
+
 gulp.task('clean', function (cb) {
-    del(['build/**/*', '!build/bower_components'], cb);
+    del(['build/**/*', '!build/bower_components/**/*'], cb);
 });
 
 /*
@@ -60,31 +74,10 @@ gulp.task('markup', function () {
 });
 
 /*
- * Development
+ * Scripts
  */
 
-var bundler = watchify(browserify('./app/main.js', watchify.args));
-gulp.task('serve', function () {
-    
-    bundler.on('update', bundle);
-    bundler.on('log', gutil.log);
-    
-    sync({
-        server: {
-            baseDir: "./build"
-        }
-    });
-    
-});
-
-gulp.task('default', ['scripts'], function () {
-    gulp.watch('./app/**/*.scss', ['styles']);
-    gulp.watch('./app/**/*.html', ['markup']);
-});
-
-gulp.task('scripts', ['serve'], bundle);
-                      
-gulp.task('bundle', bundle);
+gulp.task('scripts', bundle);
 
 function bundle() {
     return bundler.bundle()
@@ -100,3 +93,12 @@ function bundle() {
             stream: true
         }));
 }
+
+/*
+ * Development
+ */
+
+gulp.task('default', ['serve', 'scripts', 'styles', 'bower'], function () {
+    gulp.watch('./app/**/*.scss', ['styles']);
+    gulp.watch('./app/**/*.html', ['bower']);
+});
