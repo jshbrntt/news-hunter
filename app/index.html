@@ -1,18 +1,20 @@
 <!DOCTYPE html>
 <html ng-app="newsHunter">
-    <head>
-        <!-- bower:css -->
-        <!-- endbower -->
-        <link rel="stylesheet" type="text/css" href="base.css">
-    </head>
-    <body>
-        <div class="container">
-            <h1>News Hunter</h1>
-        </div>
-        <div ng-controller="FeedController">
-        </div>
-        <!-- bower:js -->
-        <!-- endbower -->
-        <script type="application/javascript" src="bundle.js"></script>
-    </body>
+
+<head>
+    <!-- bower:css -->
+    <!-- endbower -->
+    <link rel="stylesheet" type="text/css" href="base.css">
+</head>
+
+<body ng-controller="NewsController as news">
+    <div ng-repeat="story in news.stories">
+        <h3>{{story.title}}</h3>
+        <p ng-bind-html="story.description | renderHTMLCorrectly"></p>
+    </div>
+    <!-- bower:js -->
+    <!-- endbower -->
+    <script type="application/javascript" src="bundle.js"></script>
+</body>
+
 </html>

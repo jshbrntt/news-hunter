@@ -18,7 +18,7 @@ var reload = sync.reload;
  * Utilities
  */
 
-var bundler = watchify(browserify('./app/main.js', watchify.args));
+var bundler = watchify(browserify('./app/app.js', watchify.args));
 gulp.task('serve', function () {
     
     bundler.on('update', bundle);
