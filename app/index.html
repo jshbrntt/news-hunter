@@ -2,15 +2,39 @@
 <html ng-app="newsHunter">
 
 <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- bower:css -->
     <!-- endbower -->
     <link rel="stylesheet" type="text/css" href="base.css">
 </head>
 
-<body ng-controller="NewsController as news">
-    <div ng-repeat="story in news.stories">
-        <h3>{{story.title}}</h3>
-        <p ng-bind-html="story.description | renderHTMLCorrectly"></p>
+<body>
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#">News Hunter</a>
+            </div>
+        </div>
+    </nav>
+    <div class="container-fluid">
+        <div class="row">
+            <div ng-controller="SidebarController as bar" class="col-sm-3 col-md-2 sidebar">
+                <ul class="nav nav-sidebar">
+                    <li ng-repeat="category in bar.categories">
+                        <a href="#">{{category | uppercase }}</a>
+                    </li>
+                </ul>
+            </div>
+            <div ng-controller="NewsController as news" class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+                <h1 class="page-header">Category</h1>
+                <div ng-repeat="story in news.stories">
+                    <h3>{{story.title}}</h3>
+                    <p ng-bind-html="story.description | renderHTMLCorrectly"></p>
+                </div>
+            </div>
+        </div>
     </div>
     <!-- bower:js -->
     <!-- endbower -->

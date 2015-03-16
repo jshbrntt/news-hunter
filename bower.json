@@ -1,18 +1,18 @@
 {
-    "name": "news-hunter",
-    "version": "0.0.0",
-    "authors": [
+  "name": "news-hunter",
+  "version": "0.0.0",
+  "authors": [
     "Joshua Barnett <josh@caffeinatednightmare.com>"
   ],
-    "description": "An API client for the Yahoo News Service.",
-    "main": "app/main.js",
-    "moduleType": [
+  "description": "An API client for the Yahoo News Service.",
+  "main": "app/main.js",
+  "moduleType": [
     "node"
   ],
-    "private": true,
-    "dependencies": {
-        "jquery": "2.1.3",
-        "angular": "1.3.14",
-        "bootstrap": "3.3.2"
-    }
+  "private": true,
+  "dependencies": {
+    "jquery": "2.1.3",
+    "angular": "1.3.14",
+    "bootstrap": "3.3.2"
+  }
 }

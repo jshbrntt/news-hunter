@@ -43,7 +43,10 @@ gulp.task('clean', function (cb) {
 gulp.task('bower', ['markup'], function () {
     return gulp.src('./build/index.html')
         .pipe(wiredep())
-        .pipe(gulp.dest('./build'));
+        .pipe(gulp.dest('./build'))
+        .pipe(sync.reload({
+            stream: true
+        }));
 });
 
 /*
@@ -67,10 +70,7 @@ gulp.task('styles', function () {
 
 gulp.task('markup', function () {
     return gulp.src('./app/*.html')
-        .pipe(gulp.dest('./build'))
-        .pipe(sync.reload({
-            stream: true
-        }));
+        .pipe(gulp.dest('./build'));
 });
 
 /*
