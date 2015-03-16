@@ -1,0 +1,13 @@
+<div ng-controller="NewsCtrl as ctrl" class="news">
+    <h1>{{ctrl.category | uppercase}} NEWS</h1>
+    <hr>
+    <div ng-repeat="item in ctrl.news" class="item">
+        <div class="row">
+            <div class="col-lg-12">
+                <h2>{{ item.title }}</h2>
+                <div ng-bind-html="item.description | rawHtml"></div>
+            </div>
+            <hr>
+        </div>
+    </div>
+</div>

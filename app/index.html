@@ -11,28 +11,13 @@
 </head>
 
 <body>
-    <nav class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container-fluid">
-            <div class="navbar-header">
-                <a class="navbar-brand" href="#">News Hunter</a>
-            </div>
+    <div id="wrapper">
+        <div id="sidebar-wrapper">
+            <sidebar></sidebar>
         </div>
-    </nav>
-    <div class="container-fluid">
-        <div class="row">
-            <div ng-controller="SidebarController as bar" class="col-sm-3 col-md-2 sidebar">
-                <ul class="nav nav-sidebar">
-                    <li ng-repeat="category in bar.categories">
-                        <a href="#">{{category | uppercase }}</a>
-                    </li>
-                </ul>
-            </div>
-            <div ng-controller="NewsController as news" class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-                <h1 class="page-header">Category</h1>
-                <div ng-repeat="story in news.stories">
-                    <h3>{{story.title}}</h3>
-                    <p ng-bind-html="story.description | renderHTMLCorrectly"></p>
-                </div>
+        <div id="page-content-wrapper">
+            <div class="container-fluid">
+                <ng-view></ng-view>
             </div>
         </div>
     </div>
