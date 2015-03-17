@@ -4,8 +4,6 @@
   "description": "An API client for the Yahoo News Service.",
   "main": "gulpfile.js",
   "scripts": {
-    "start": "http-server build -a 127.0.0.1 -p 8080 -o -c-1",
-    "postinstall": "bower install"
   },
   "author": "Joshua Barnett <josh@caffeinatednightmare.com>",
   "private": true,

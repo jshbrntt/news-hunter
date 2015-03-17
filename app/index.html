@@ -11,7 +11,17 @@
 </head>
 
 <body>
-    <div id="wrapper">
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="navbar-header pull-left">
+            <a class="navbar-brand" href="#">News Hunter</a>
+        </div>
+        <div class="navbar-header pull-right">
+            <button id="menu-toggle" type="button" class="btn btn-default navbar-btn">
+                <span class="glyphicon glyphicon-th-list" aria-hidden="true"></span>
+            </button>
+        </div>
+    </div>
+    <div class="container" id="wrapper">
         <div id="sidebar-wrapper">
             <sidebar></sidebar>
         </div>
@@ -24,6 +34,12 @@
     <!-- bower:js -->
     <!-- endbower -->
     <script type="application/javascript" src="bundle.js"></script>
+    <script>
+        $("#menu-toggle").click(function (e) {
+            e.preventDefault();
+            $("#wrapper").toggleClass("toggled");
+        });
+    </script>
 </body>
 
 </html>
