@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html ng-app="newsHunter">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- bower:css -->
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
+    <!-- endbower -->
+    <link rel="stylesheet" type="text/css" href="base.css">
+</head>
+
+<body>
+    <div id="wrapper">
+        <div id="sidebar-wrapper">
+            <sidebar></sidebar>
+        </div>
+        <div id="page-content-wrapper">
+            <div class="container-fluid">
+                <ng-view></ng-view>
+            </div>
+        </div>
+    </div>
+    <!-- bower:js -->
+    <script src="bower_components/jquery/dist/jquery.js"></script>
+    <script src="bower_components/angular/angular.js"></script>
+    <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
+    <script src="bower_components/angular-route/angular-route.js"></script>
+    <script src="bower_components/spin.js/spin.js"></script>
+    <script src="bower_components/angular-spinner/angular-spinner.js"></script>
+    <!-- endbower -->
+    <script type="application/javascript" src="bundle.js"></script>
+</body>
+
+</html>
