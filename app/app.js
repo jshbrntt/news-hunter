@@ -3,7 +3,7 @@ var angular = require('angular');
 
 (function () {
 
-    var app = angular.module('newsHunter', ['ngRoute']);
+    var app = angular.module('newsHunter', ['ngRoute', 'angularSpinner']);
 
     // Filters
     app.filter('rawHtml', ['$sce', function ($sce) {
@@ -13,7 +13,8 @@ var angular = require('angular');
     }]);
     
     // Config
-    app.config(['$routeProvider', function ($routeProvider) {
+    
+    app.config(['$routeProvider', 'usSpinnerConfigProvider', function ($routeProvider, usSpinnerConfigProvider) {
         $routeProvider.
         when('/:category', {
             templateUrl: 'news.html',
@@ -21,6 +22,9 @@ var angular = require('angular');
         }).
         otherwise({
             redirectTo: '/topstories'
+        });
+        usSpinnerConfigProvider.setDefaults({
+            color: 'black'
         });
     }]);
 
@@ -86,12 +90,13 @@ var angular = require('angular');
         this.categories = CategoryService.list;
     }]);
 
-    app.controller('NewsCtrl', ['$scope', '$routeParams', 'YahooNewsService', function ($scope, $routeParams, YahooNewsService) {
+    app.controller('NewsCtrl', ['$scope', '$routeParams', 'YahooNewsService', 'usSpinnerService', function ($scope, $routeParams, YahooNewsService, usSpinnerService) {
         this.category = $routeParams.category;
         var ctrl = this;
         YahooNewsService.getNewsForCategory($routeParams.category).
         then(function (data) {
             ctrl.news = data.query.results.item;
+            usSpinnerService.stop('loading-news-spinner');
         });
     }]);
 
